@@ -3,6 +3,17 @@ package br.fepi.socialbooks.domain;
 import java.util.Date;
 
 public class Comentario {
+	
+	private Long id;
+	
+	private String texto;
+	
+	private String usuario;
+	
+	private Date data;
+	
+	private Livro livro;
+
 	public Long getId() {
 		return id;
 	}
@@ -41,15 +52,6 @@ public class Comentario {
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
-	}
-
-	private Long id;
+	}	
 	
-	private String texto;
-	
-	private String usuario;
-	
-	private Date data;
-	
-	private Livro livro;
 }
