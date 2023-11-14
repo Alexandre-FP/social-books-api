@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestController ;
 
 import br.fepi.socialbooks.domain.Livro;
 import br.fepi.socialbooks.repository.LivrosRepository;
@@ -27,7 +27,7 @@ public class LivrosResources {
 		Livro livro3 = new Livro("1984");
 		
 		Livro[] livros = {
-				livro1, livro2,livro3
+			livro1, livro2,livro3
 		};
 		
 		return Arrays.asList(livros);

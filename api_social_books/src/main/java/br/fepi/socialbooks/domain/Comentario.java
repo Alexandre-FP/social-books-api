@@ -6,7 +6,7 @@ public class Comentario {
 	
 	private Long id;
 	
-	private String texto;
+	private String texto ;
 	
 	private String usuario;
 	
