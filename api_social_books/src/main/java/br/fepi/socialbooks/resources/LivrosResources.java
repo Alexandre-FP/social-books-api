@@ -19,7 +19,7 @@ import br.fepi.socialbooks.repository.LivrosRepository;
 public class LivrosResources {
 	
 	@Autowired
-	private LivrosRepository livrosRepository;
+	private LivrosRepository livrosRepository; 
 	
 	//@RequestMapping(method = RequestMethod.GET)
 	//public List<Livro>  listar() {
