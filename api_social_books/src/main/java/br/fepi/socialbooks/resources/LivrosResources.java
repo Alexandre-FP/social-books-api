@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.fepi.socialbooks.domain.Comentario;
 import br.fepi.socialbooks.domain.Livro;
+import br.fepi.socialbooks.repository.ComentarioRepository;
 import br.fepi.socialbooks.repository.LivrosRepository;
 
 @RestController
@@ -20,19 +22,9 @@ public class LivrosResources {
 	
 	@Autowired
 	private LivrosRepository livrosRepository; 
-	
-	//@RequestMapping(method = RequestMethod.GET)
-	//public List<Livro>  listar() {
-		//Livro livro1 = new Livro("a arte da guerra");
-		//Livro livro2 = new Livro("O pequeno príncipe");
-		//Livro livro3 = new Livro("1984");
-		
-		//Livro[] livros = {
-			//	livro1, livro2,livro3
-	//	};
-		
-	//	return Arrays.asList(livros);
-	//}
+
+	@Autowired
+	private ComentarioRepository comentariosRepository; 
 
 	@RequestMapping(method = RequestMethod.POST)
 	public void salvar(@RequestBody Livro livro) {
@@ -47,7 +39,7 @@ public class LivrosResources {
 	
 	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)	
-	public Livro buscaId(@PathVariable("id") long id) {
+	public Livro buscaId(@PathVariable("id") long id) { 
 		return livrosRepository.findById(id).orElse(null);
 	}
 
@@ -63,4 +55,12 @@ public class LivrosResources {
 		livrosRepository.save(livro);
 	}
 	
+	@RequestMapping(value = "/{id}/comentario", method = RequestMethod.POST)
+	public void adicionarComentario(@PathVariable("id") Long livroId, @RequestBody Comentario comentario){
+		Livro livro = new Livro(null);
+		livro.setId(livroId);
+
+		comentario.setLivro(livro);
+		comentariosRepository.save(comentario); 
+	}
 }
